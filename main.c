@@ -9,6 +9,8 @@
 // lado A + musicas lado B + musicas
 #include <stdio.h>
 #include <unistd.h>
+#include "geraPermutacao.c"
+
 
 int main(){
 
@@ -17,9 +19,7 @@ int main(){
     char row[10];
     char *output;
     char T[5], L[5], M[10], S[10];
-    char enfeite1[50] = "=========================";
-    // int duracao, qntd, min, sec, N;
-    int sec = 0;
+    char enfeite1[30] = "==============================";
 
     printf("\n\nInsira o nome de um arquivo:\n");
     scanf("%s", filename);
@@ -32,32 +32,35 @@ int main(){
         inputFile = fopen(filename, "r");
     }
 
-    // while(feof(inputFile) == 0) //linha de comando (a função feof serve como controle para verificar se o arquivo ainda tem linhas a serem lidas)
-    // {
     output = fgets(row, 10 ,inputFile);
-    
+    int out = atoi(output);
     printf("\n\nIniciando...");
-    for(int i = 0; i < atoi(output); i++){
+    for(int i = 0; i < out; i++){
         sleep(1);
         fscanf(inputFile,"%s %s", T, L);
-        // duracao = atoi(T);
-        // qntd = atoi(L);
         printf("\n\n%s\n\nTeste %d\n%d minutos\n",enfeite1,i+1,atoi(T));
+        
+        int store[atoi(L)];
+        int aux[atoi(L)];
+        int duracao = atoi(T)*60;
 
-        printf("\nLado A:\n");
-        for(int j = 0; j< atoi(L); j++){
+        for(int j = 1; j <= atoi(L); j++){
             fscanf(inputFile,"%s %s", M, S);
-            // min = atoi(M);
-            // sec = atoi(S);
-            sec = (atoi(S) + atoi(M)*60);
-            printf("%sm %ss // %dsec\n", M, S, sec);
+            store[j] = (atoi(S) + atoi(M)*60);
+            // printf("%sm %ss // %dsec\n", M, S, store[j]);
         }
-        printf("\nLado B:\ngood night!\n");
+        // if(k > (atoi(T)*60)){
+        //     printf("\nImpossível gravar todas as músicas nessa fita!");
+        // }else{
+        //     printf("\nLado A:\n");
+        if(geraSequencias(store,aux,atoi(L),1,duracao) == 0){
+            printf("\nImpossível gravar todas as músicas nessa fita!\n");
+        }
+        // }
+        // geraSequencias(store, aux, atoi(T), 1);
+        // printf("\n%d sec\n\nLado B:\ngood night!\n", *store);
     }
-    // printf("%d", N);
-    // if (output)
-        // printf("%s", row);
-
+    printf("\n\n%s",enfeite1);
     fclose(inputFile);
     return 0;
 }
