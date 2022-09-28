@@ -8,6 +8,7 @@
 // soma minutos lado A + lado B
 // lado A + musicas lado B + musicas
 #include <stdio.h>
+#include <unistd.h>
 
 int main(){
 
@@ -16,8 +17,9 @@ int main(){
     char row[10];
     char *output;
     char T[5], L[5], M[10], S[10];
+    char enfeite1[50] = "=========================";
     // int duracao, qntd, min, sec, N;
-    int sec;
+    int sec = 0;
 
     printf("\n\nInsira o nome de um arquivo:\n");
     scanf("%s", filename);
@@ -33,13 +35,15 @@ int main(){
     // while(feof(inputFile) == 0) //linha de comando (a função feof serve como controle para verificar se o arquivo ainda tem linhas a serem lidas)
     // {
     output = fgets(row, 10 ,inputFile);
-    // N = atoi(output);
+    
     printf("\n\nIniciando...");
     for(int i = 0; i < atoi(output); i++){
+        sleep(1);
         fscanf(inputFile,"%s %s", T, L);
         // duracao = atoi(T);
         // qntd = atoi(L);
-        printf("\n\n%d minutos\n", atoi(T));
+        printf("\n\n%s\n\nTeste %d\n%d minutos\n",enfeite1,i+1,atoi(T));
+
         printf("\nLado A:\n");
         for(int j = 0; j< atoi(L); j++){
             fscanf(inputFile,"%s %s", M, S);
