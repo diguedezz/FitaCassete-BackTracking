@@ -21,10 +21,10 @@ int main(){
     char T[5], L[5], M[10], S[10];
     char enfeite1[30] = "==============================";
 
-    printf("\n\nInsira o nome de um arquivo:\n");
-    scanf("%s", filename);
+    // printf("\n\nInsira o nome de um arquivo:\n");
+    // scanf("%s", filename);
 
-    inputFile = fopen(filename, "r"); //linha de comando (fopen = open file, retorna ponteiro, por isso podemos criar a condição de tratamento abaixo)
+    inputFile = fopen("fita1.txt", "r"); //linha de comando (fopen = open file, retorna ponteiro, por isso podemos criar a condição de tratamento abaixo)
     while (inputFile == NULL) //null é retornado quando não foi encontrado nenhum arquivo
     {
         printf("Não foi encontrado nenhum arquivo!\n\nInsira o nome de um arquivo válido:\n");
@@ -49,9 +49,10 @@ int main(){
             store[j] = (atoi(S)+ atoi(M)*60);
         }
 
-        geraSequencias(store,aux,atoi(L),1,duracao);
 
+    geraSequencias(store,aux,atoi(L),1,duracao);
     }
+    
     printf("\n\n%s",enfeite1);
     fclose(inputFile);
     return 0;
