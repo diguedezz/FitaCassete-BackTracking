@@ -1,3 +1,18 @@
+/********************************************************************/
+/*              Universidade Presbiteriana Mackenzie                */
+/*                                                                  */        
+/*              Ciência da Computação                               */
+/*              Projeto e Análise de Algoritmos II                  */
+/*                                                                  */
+/*              Turma 04N                                           */
+/*              Diego Guedes de Moraes - (TIA: 32148127)            */
+/*                                                                  */
+/*              Data: 28 de setembro de 2022.                       */
+/*                                                                  */
+/********************************************************************/
+
+
+
 // ENTRADA
 // N conjuntos de teste
 // T indica tempo total em min da fita
@@ -19,12 +34,12 @@ int main(){
     char row[10];
     char *output;
     char T[5], L[5], M[10], S[10];
-    char enfeite1[30] = "==============================";
+    char enfeite1[31] = "==============================";
 
-    // printf("\n\nInsira o nome de um arquivo:\n");
-    // scanf("%s", filename);
+    printf("\n\nInsira o nome de um arquivo:\n");
+    scanf("%s", filename);
 
-    inputFile = fopen("fita1.txt", "r"); //linha de comando (fopen = open file, retorna ponteiro, por isso podemos criar a condição de tratamento abaixo)
+    inputFile = fopen(filename, "r"); //linha de comando (fopen = open file, retorna ponteiro, por isso podemos criar a condição de tratamento abaixo)
     while (inputFile == NULL) //null é retornado quando não foi encontrado nenhum arquivo
     {
         printf("Não foi encontrado nenhum arquivo!\n\nInsira o nome de um arquivo válido:\n");
