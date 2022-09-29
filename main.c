@@ -38,7 +38,7 @@ int main(){
     for(int i = 0; i < out; i++){
         sleep(1);
         fscanf(inputFile,"%s %s", T, L);
-        printf("\n\n%s\n\nTeste %d\n%d minutos\n",enfeite1,i+1,atoi(T));
+        printf("\n\n%s\n\nTeste %d\n%d minutos\n\n",enfeite1,i+1,atoi(T));
         
         int store[atoi(L)];
         int aux[atoi(L)];
@@ -46,19 +46,11 @@ int main(){
 
         for(int j = 1; j <= atoi(L); j++){
             fscanf(inputFile,"%s %s", M, S);
-            store[j] = (atoi(S) + atoi(M)*60);
-            // printf("%sm %ss // %dsec\n", M, S, store[j]);
+            store[j] = (atoi(S)+ atoi(M)*60);
         }
-        // if(k > (atoi(T)*60)){
-        //     printf("\nImpossível gravar todas as músicas nessa fita!");
-        // }else{
-        //     printf("\nLado A:\n");
-        if(geraSequencias(store,aux,atoi(L),1,duracao) == 0){
-            printf("\nImpossível gravar todas as músicas nessa fita!\n");
-        }
-        // }
-        // geraSequencias(store, aux, atoi(T), 1);
-        // printf("\n%d sec\n\nLado B:\ngood night!\n", *store);
+
+        geraSequencias(store,aux,atoi(L),1,duracao);
+
     }
     printf("\n\n%s",enfeite1);
     fclose(inputFile);
